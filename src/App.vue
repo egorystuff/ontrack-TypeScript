@@ -1,50 +1,34 @@
 <script setup>
-import { CheckCircleIcon } from '@heroicons/vue/24/solid'
-import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
+import { ref } from 'vue'
+import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './constants'
+import TheHeader from './components/TheHeader.vue'
+import TheNav from './components/TheNav.vue'
+import TheTimeline from './pages/TheTimeline.vue'
+import TheActivities from './pages/TheActivities.vue'
+import TheProgress from './pages/TheProgress.vue'
+
+const currentPage = ref(normalizePageHash())
+
+function normalizePageHash() {
+  const hash = window.location.hash.slice(1)
+
+  if ([PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS].includes(hash)) {
+    return hash
+  } else {
+    window.location.hash = PAGE_TIMELINE
+    return PAGE_TIMELINE
+  }
+}
 </script>
 
 <template>
-  <header class="sticky top-0 z-20 flex items-center justify-between border-b bg-white p-3">
-    <a href="#">
-      <img class="h-9" src="./assets//logo.png" alt="Logo" />
-    </a>
-
-    <a class="text-sm" href="#">
-      <div v-if="true" class="flex items-center gap-1">
-        Day complete!
-        <CheckCircleIcon class="h-7 text-green-500" />
-      </div>
-
-      <div v-else class="flex items-center gap-1">
-        <div>Progress: <span class="font-mono">20%</span></div>
-        <div class="h-3 w-3 rounded-full bg-red-500"></div>
-      </div>
-    </a>
-  </header>
+  <TheHeader />
 
   <main class="flex flex-grow flex-col">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, possimus expedita harum
-    sapiente omnis, ad nesciunt perferendis ea ullam provident iusto hic nemo architecto explicabo
-    aut aliquid, maxime consectetur doloribus.
+    <TheTimeline v-show="currentPage === PAGE_TIMELINE" />
+    <TheActivities v-show="currentPage === PAGE_ACTIVITIES" />
+    <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
 
-  <nav class="sticky bottom-0 z-10 bg-white">
-    <ul class="flex items-center justify-around border-t">
-      <li class="flex-1">
-        <a class="flex flex-col items-center p-2 text-xs capitalize" href="#timeline">
-          <ClockIcon class="h-6 w-6" /> timeline
-        </a>
-      </li>
-      <li class="flex-1">
-        <a class="flex flex-col items-center p-2 text-xs capitalize" href="#activities">
-          <ListBulletIcon class="h-6 w-6" /> activities
-        </a>
-      </li>
-      <li class="flex-1">
-        <a class="flex flex-col items-center p-2 text-xs capitalize" href="#progress">
-          <ChartBarIcon class="h-6 w-6" /> progress
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <TheNav :current-page="currentPage" @navigate="currentPage = $event" />
 </template>
