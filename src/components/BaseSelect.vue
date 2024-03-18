@@ -14,9 +14,7 @@ const props = defineProps({
   placeholder: { required: true, type: String }
 })
 
-const emit = defineEmits({
-  select: isNumberOrNull
-})
+const emit = defineEmits({ select: isNumberOrNull })
 
 const isNotSelected = computed(() => isUndefinedOrNull(props.selected))
 </script>
