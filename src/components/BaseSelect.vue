@@ -22,7 +22,7 @@ const isNotSelected = computed(() => isUndefinedOrNull(props.selected))
 <template>
   <div class="flex gap-2">
     <BaseButton @click="emit('select', null)">
-      <XMarkIcon class="h-8" />
+      <XMarkIcon class="h-5" />
     </BaseButton>
     <select
       class="w-full truncate rounded bg-gray-100 py-1 px-2 text -2xl"

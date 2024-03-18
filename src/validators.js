@@ -6,10 +6,6 @@ function isNull(value) {
   return value === null
 }
 
-function isUndefined(value) {
-  return value === undefined
-}
-
 function isNumber(value) {
   return typeof value === 'number'
 }
@@ -19,7 +15,7 @@ function isString(value) {
 }
 
 function isSelectOptionValid({ value, label }) {
-  return isNumber(value) && isString(label)
+  return isNumber(value) && isNotEmptyString(label)
 }
 
 function isBetween(value, start, end) {
@@ -70,4 +66,8 @@ export function validateActivities(activities) {
 
 export function isButtonTypeValid(type) {
   return BUTTON_TYPES.includes(type)
+}
+
+export function isUndefined(value) {
+  return value === undefined
 }

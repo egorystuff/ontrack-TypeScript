@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './constants'
-import { normalizePageHash, generateTimelineItems } from './functions'
+import { normalizePageHash, generateTimelineItems, generateActivitySelectOtions } from './functions'
 
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
@@ -13,10 +13,16 @@ const currentPage = ref(normalizePageHash())
 
 const timelineItems = generateTimelineItems()
 
-const activities = ['Coding', 'Reading', 'Training']
+const activities = ref(['Coding', 'Reading', 'Training'])
+
+const activitySelectOptions = generateActivitySelectOtions(activities.value)
 
 function goTo(page) {
   currentPage.value = page
+}
+
+function deleteActivity(activity) {
+  activities.value.splice(activities.value.indexOf(activity), 1)
 }
 </script>
 
@@ -26,8 +32,16 @@ function goTo(page) {
   <TheHeader @go-to-timeline="goTo(PAGE_TIMELINE)" @go-to-progress="goTo(PAGE_PROGRESS)" />
 
   <main class="flex flex-grow flex-col">
-    <TheTimeline v-show="currentPage === PAGE_TIMELINE" :timeline-items="timelineItems" />
-    <TheActivities v-show="currentPage === PAGE_ACTIVITIES" :activities="activities" />
+    <TheTimeline
+      v-show="currentPage === PAGE_TIMELINE"
+      :timeline-items="timelineItems"
+      :activity-select-options="activitySelectOptions"
+    />
+    <TheActivities
+      v-show="currentPage === PAGE_ACTIVITIES"
+      :activities="activities"
+      @deleteActivity="deleteActivity"
+    />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
 
