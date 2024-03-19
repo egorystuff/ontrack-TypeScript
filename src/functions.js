@@ -1,4 +1,10 @@
-import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS, HOURS_IN_DAY } from './constants'
+import {
+  PAGE_TIMELINE,
+  PAGE_ACTIVITIES,
+  PAGE_PROGRESS,
+  HOURS_IN_DAY,
+  SECONDS_IN_HOUR
+} from './constants'
 
 export function normalizePageHash() {
   const hash = window.location.hash.slice(1)
@@ -19,5 +25,17 @@ export function generateTimelineItems() {
 }
 
 export function generateActivitySelectOtions(activities) {
-  return activities.map((label, value) => ({ label, value }))
+  return activities.map((activity) => ({ label: activity.name, value: activity.id }))
+}
+
+export function id() {
+  return Date.now().toString(36) + Math.random().toString(36).substring(2)
+}
+
+export function generateActivities() {
+  return ['Coding', 'Training', 'Reading', 'Learning'].map((name, hours) => ({
+    id: id(),
+    name,
+    secondsToComplete: hours * SECONDS_IN_HOUR
+  }))
 }

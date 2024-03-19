@@ -9,7 +9,7 @@ import BaseSelect from './BaseSelect.vue'
 defineProps({
   activity: {
     required: true,
-    type: String,
+    type: Object,
     validator: isActivityValid
   }
 })
@@ -27,7 +27,7 @@ const secondsToComplete = ref(null)
       <BaseButton :type="BUTTON_TYPE_DANGER" @click="emit('delete')">
         <TrashIcon class="h-5" />
       </BaseButton>
-      <span class="truncate text-xl">{{ activity }}</span>
+      <span class="truncate text-xl">{{ activity.name }}</span>
     </div>
 
     <div>

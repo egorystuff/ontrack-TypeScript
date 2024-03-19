@@ -1,7 +1,12 @@
 <script setup>
 import { ref } from 'vue'
 import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './constants'
-import { normalizePageHash, generateTimelineItems, generateActivitySelectOtions } from './functions'
+import {
+  normalizePageHash,
+  generateTimelineItems,
+  generateActivitySelectOtions,
+  generateActivities
+} from './functions'
 
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
@@ -13,7 +18,7 @@ const currentPage = ref(normalizePageHash())
 
 const timelineItems = generateTimelineItems()
 
-const activities = ref(['Coding', 'Reading', 'Training'])
+const activities = ref(generateActivities())
 
 const activitySelectOptions = generateActivitySelectOtions(activities.value)
 
