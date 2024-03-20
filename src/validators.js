@@ -2,10 +2,6 @@ import { BUTTON_TYPES, NAV_ITEMS, HOURS_IN_DAY, MIDNIGHT_HOUR } from './constant
 
 // -----------------------------------------------------------------------------
 
-function isNull(value) {
-  return value === null
-}
-
 function isNumber(value) {
   return typeof value === 'number'
 }
@@ -27,6 +23,10 @@ function isNotEmptyString(value) {
 }
 
 // -----------------------------------------------------------------------------
+
+export function isNull(value) {
+  return value === null
+}
 
 export function isHourValid(hour) {
   return isNumber(hour) && isBetween(hour, MIDNIGHT_HOUR, HOURS_IN_DAY - 1)
@@ -70,4 +70,8 @@ export function isButtonTypeValid(type) {
 
 export function isUndefined(value) {
   return value === undefined
+}
+
+export function isSelectValueValid(value) {
+  return isNumber(value) || isNull(value) || isNotEmptyString(value)
 }

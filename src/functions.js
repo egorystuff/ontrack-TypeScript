@@ -5,6 +5,9 @@ import {
   HOURS_IN_DAY,
   SECONDS_IN_HOUR
 } from './constants'
+import { isNull } from './validators'
+
+// ------------------------------------------------------------------------------------------
 
 export function normalizePageHash() {
   const hash = window.location.hash.slice(1)
@@ -19,7 +22,7 @@ export function normalizePageHash() {
 export function generateTimelineItems() {
   const timelineItems = []
   for (let hour = 0; hour < HOURS_IN_DAY; hour++) {
-    timelineItems.push({ hour })
+    timelineItems.push({ hour, activityId: null })
   }
   return timelineItems
 }
@@ -38,4 +41,8 @@ export function generateActivities() {
     name,
     secondsToComplete: hours * SECONDS_IN_HOUR
   }))
+}
+
+export function normalizeSelectValue(value) {
+  return isNull(value) || isNaN(value) ? value : +value
 }
