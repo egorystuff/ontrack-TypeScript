@@ -5,6 +5,7 @@ import {
   validateSelectOptions,
   validateActivities
 } from '../validators'
+import { NULLABLE_ACTIVITY } from '../constants'
 import BaseSelect from './BaseSelect.vue'
 import TimelineHour from './TimelineHour.vue'
 
@@ -26,13 +27,16 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits({ selectActivity: isActivityValid })
+const emit = defineEmits({
+  selectActivity: isActivityValid
+})
 
 function selectActivity(id) {
-  emit(
-    'selectActivity',
-    props.activities.find((activity) => activity.id === id)
-  )
+  emit('selectActivity', findActivityById(id))
+}
+
+function findActivityById(id) {
+  return props.activities.find((activity) => activity.id === id) || NULLABLE_ACTIVITY
 }
 </script>
 

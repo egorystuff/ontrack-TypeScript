@@ -16,7 +16,7 @@ import TheProgress from './pages/TheProgress.vue'
 
 const currentPage = ref(normalizePageHash())
 
-const timelineItems = generateTimelineItems()
+const timelineItems = ref(generateTimelineItems())
 
 const activities = ref(generateActivities())
 
@@ -27,6 +27,12 @@ function goTo(page) {
 }
 
 function deleteActivity(activity) {
+  timelineItems.value.forEach((timelineItem) => {
+    if (timelineItem.activityId === activity.id) {
+      timelineItem.activityId = null
+    }
+  })
+
   activities.value.splice(activities.value.indexOf(activity), 1)
 }
 
@@ -34,8 +40,12 @@ function createActivity(activity) {
   activities.value.push(activity)
 }
 
-function setTimelineItemActivity({ timelineItem, activity }) {
+function setTimelineItemActivity(timelineItem, activity) {
   timelineItem.activityId = activity.id
+}
+
+function setActivitySecondToComplete(activity, secondsToComplete) {
+  activity.secondsToComplete = secondsToComplete
 }
 </script>
 
@@ -55,8 +65,9 @@ function setTimelineItemActivity({ timelineItem, activity }) {
     <TheActivities
       v-show="currentPage === PAGE_ACTIVITIES"
       :activities="activities"
-      @deleteActivity="deleteActivity"
-      @createActivity="createActivity"
+      @delete-activity="deleteActivity"
+      @create-activity="createActivity"
+      @set-activity-second-to-complete="setActivitySecondToComplete"
     />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>

@@ -27,7 +27,7 @@ defineProps({
 })
 
 const emit = defineEmits({
-  setTimelineItemActivity({ timelineItem, activity }) {
+  setTimelineItemActivity(timelineItem, activity) {
     return [isTimelineItemValid(timelineItem), isActivityValid(activity)].every(Boolean)
   }
 })
@@ -42,7 +42,7 @@ const emit = defineEmits({
         :timeline-item="timelineItem"
         :activity-select-options="activitySelectOptions"
         :activities="activities"
-        @select-activity="emit('setTimelineItemActivity', { timelineItem, activity: $event })"
+        @select-activity="emit('setTimelineItemActivity', timelineItem, $event)"
       />
     </ul>
   </div>

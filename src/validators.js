@@ -2,10 +2,6 @@ import { BUTTON_TYPES, NAV_ITEMS, HOURS_IN_DAY, MIDNIGHT_HOUR } from './constant
 
 // -----------------------------------------------------------------------------
 
-function isNumber(value) {
-  return typeof value === 'number'
-}
-
 function isString(value) {
   return typeof value === 'string'
 }
@@ -57,6 +53,9 @@ export function isNumberOrNull(value) {
 }
 
 export function isActivityValid({ id, name, secondsToComplete }) {
+  if (isNull(id)) {
+    return true
+  }
   return [isNotEmptyString(id), isNotEmptyString(name), isNumber(secondsToComplete)].every(Boolean)
 }
 
@@ -74,4 +73,8 @@ export function isUndefined(value) {
 
 export function isSelectValueValid(value) {
   return isNumber(value) || isNull(value) || isNotEmptyString(value)
+}
+
+export function isNumber(value) {
+  return typeof value === 'number'
 }
