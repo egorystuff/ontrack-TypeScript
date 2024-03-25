@@ -1,16 +1,17 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { nextTick, ref, watchPostEffect } from 'vue'
 import {
   validateTimelineItems,
   validateSelectOptions,
   validateActivities,
   isTimelineItemValid,
-  isActivityValid
+  isActivityValid,
+  isPageValid
 } from '../validators'
 import TimelineItem from '../components/TimelineItem.vue'
-import { MIDNIGHT_HOUR } from '@/constants'
+import { MIDNIGHT_HOUR, PAGE_TIMELINE } from '@/constants'
 
-defineProps({
+const props = defineProps({
   timelineItems: {
     required: true,
     type: Array,
@@ -25,6 +26,11 @@ defineProps({
     required: true,
     type: Array,
     validator: validateSelectOptions
+  },
+  currentPage: {
+    required: true,
+    type: String,
+    validator: isPageValid
   }
 })
 
@@ -36,16 +42,20 @@ const emit = defineEmits({
   }
 })
 
-function scrollToCuttentTimelineItem() {
-  const currentHour = new Date().getHours()
-  if (currentHour === MIDNIGHT_HOUR) {
+watchPostEffect(async () => {
+  if (props.currentPage === PAGE_TIMELINE) {
+    await nextTick()
+    scrollToHour(new Date().getHours())
+  }
+})
+
+function scrollToHour(hour) {
+  if (hour === MIDNIGHT_HOUR) {
     document.body.scrollIntoView()
   } else {
-    timelineItemRefs.value[currentHour - 1].$el.scrollIntoView()
+    timelineItemRefs.value[hour - 1].$el.scrollIntoView()
   }
 }
-
-onMounted(() => scrollToCuttentTimelineItem())
 </script>
 
 <template>
@@ -58,6 +68,7 @@ onMounted(() => scrollToCuttentTimelineItem())
         :activity-select-options="activitySelectOptions"
         :activities="activities"
         ref="timelineItemRefs"
+        @scroll-to-hour="scrollToHour"
         @select-activity="emit('setTimelineItemActivity', timelineItem, $event)"
       />
     </ul>

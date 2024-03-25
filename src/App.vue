@@ -53,7 +53,8 @@ function setActivitySecondToComplete(activity, secondsToComplete) {
 <!-- --------------------------------------------------------------------------------- -->
 
 <template>
-  <TheHeader @go-to-timeline="goTo(PAGE_TIMELINE)" @go-to-progress="goTo(PAGE_PROGRESS)" />
+  <!-- <TheHeader @go-to-timeline="goTo(PAGE_TIMELINE)" @go-to-progress="goTo(PAGE_PROGRESS)" /> -->
+  <TheHeader @navigate="goTo($event)" />
 
   <main class="flex flex-grow flex-col">
     <TheTimeline
@@ -61,6 +62,7 @@ function setActivitySecondToComplete(activity, secondsToComplete) {
       :timeline-items="timelineItems"
       :activity-select-options="activitySelectOptions"
       :activities="activities"
+      :current-page="currentPage"
       @set-timeline-item-activity="setTimelineItemActivity"
     />
     <TheActivities
