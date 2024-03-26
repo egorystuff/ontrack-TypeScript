@@ -79,6 +79,7 @@ function setActivitySecondToComplete(activity, secondsToComplete) {
     <TheActivities
       v-show="currentPage === PAGE_ACTIVITIES"
       :activities="activities"
+      :timeline-items="timelineItems"
       @delete-activity="deleteActivity"
       @create-activity="createActivity"
       @set-activity-second-to-complete="setActivitySecondToComplete"
