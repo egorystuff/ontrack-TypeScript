@@ -20,9 +20,19 @@ const activities = ref(generateActivities())
 
 const timelineItems = ref(generateTimelineItems(activities.value))
 
+const timeline = ref()
+
 const activitySelectOptions = computed(() => generateActivitySelectOtions(activities.value))
 
 function goTo(page) {
+  if (currentPage.value === PAGE_TIMELINE && page === PAGE_TIMELINE) {
+    console.log(timeline.value)
+    timeline.value.scrollToHour()
+  }
+
+  if (page !== PAGE_TIMELINE) {
+    document.body.scrollIntoView()
+  }
   currentPage.value = page
 }
 
@@ -45,6 +55,10 @@ function setTimelineItemActivity(timelineItem, activity) {
   timelineItem.activityId = activity.id
 }
 
+function updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
+  timelineItem.activitySeconds += activitySeconds
+}
+
 function setActivitySecondToComplete(activity, secondsToComplete) {
   activity.secondsToComplete = secondsToComplete
 }
@@ -53,7 +67,8 @@ function setActivitySecondToComplete(activity, secondsToComplete) {
 <!-- --------------------------------------------------------------------------------- -->
 
 <template>
-  <TheHeader @go-to-timeline="goTo(PAGE_TIMELINE)" @go-to-progress="goTo(PAGE_PROGRESS)" />
+  <!-- <TheHeader @go-to-timeline="goTo(PAGE_TIMELINE)" @go-to-progress="goTo(PAGE_PROGRESS)" /> -->
+  <TheHeader @navigate="goTo($event)" />
 
   <main class="flex flex-grow flex-col">
     <TheTimeline
@@ -61,11 +76,15 @@ function setActivitySecondToComplete(activity, secondsToComplete) {
       :timeline-items="timelineItems"
       :activity-select-options="activitySelectOptions"
       :activities="activities"
+      :current-page="currentPage"
+      ref="timeline"
       @set-timeline-item-activity="setTimelineItemActivity"
+      @update-timeline-item-activity-seconds="updateTimelineItemActivitySeconds"
     />
     <TheActivities
       v-show="currentPage === PAGE_ACTIVITIES"
       :activities="activities"
+      :timeline-items="timelineItems"
       @delete-activity="deleteActivity"
       @create-activity="createActivity"
       @set-activity-second-to-complete="setActivitySecondToComplete"
