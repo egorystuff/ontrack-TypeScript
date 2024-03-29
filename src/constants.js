@@ -9,7 +9,6 @@ export const SECONDS_IN_MINUTE = 60
 export const MINUTE_IN_HOUR = 60
 export const SECONDS_IN_HOUR = SECONDS_IN_MINUTE * MINUTE_IN_HOUR
 export const MILISECONDS_IN_SECOND = 1000
-export const NULLABLE_ACTIVITY = { id: null }
 
 export const NAV_ITEMS = {
   [PAGE_TIMELINE]: ClockIcon,
