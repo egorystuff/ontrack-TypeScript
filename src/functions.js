@@ -1,7 +1,4 @@
 import {
-  PAGE_TIMELINE,
-  PAGE_ACTIVITIES,
-  PAGE_PROGRESS,
   HOURS_IN_DAY,
   SECONDS_IN_HOUR,
   MINUTE_IN_HOUR,
@@ -11,16 +8,6 @@ import {
 import { isNull } from './validators'
 
 // ------------------------------------------------------------------------------------------
-
-export function normalizePageHash() {
-  const hash = window.location.hash.slice(1)
-  if ([PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS].includes(hash)) {
-    return hash
-  } else {
-    window.location.hash = PAGE_TIMELINE
-    return PAGE_TIMELINE
-  }
-}
 
 export function getTotalActivitySeconds(activity, timelineItems) {
   return timelineItems
