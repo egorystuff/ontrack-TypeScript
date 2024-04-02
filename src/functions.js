@@ -75,3 +75,7 @@ export function formatSeconds(seconds) {
   const utc = date.toUTCString()
   return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
 }
+
+export function currentHour() {
+  return new Date().getHours()
+}
