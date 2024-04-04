@@ -1,18 +1,10 @@
 <script setup>
 import { nextTick, ref, watchPostEffect } from 'vue'
-import { validateTimelineItems } from '../validators'
 import { MIDNIGHT_HOUR, PAGE_TIMELINE } from '@/constants'
 import { currentPage } from '../router'
 import TimelineItem from '../components/TimelineItem.vue'
 import { currentHour } from '@/functions'
-
-defineProps({
-  timelineItems: {
-    required: true,
-    type: Array,
-    validator: validateTimelineItems
-  }
-})
+import { timelineItems } from '@/timeline-items'
 
 const timelineItemRefs = ref([])
 
