@@ -14,8 +14,8 @@ export function createActivity(activity) {
   activities.value.push(activity)
 }
 
-export function setActivitySecondToComplete(activity, secondsToComplete) {
-  activity.secondsToComplete = secondsToComplete || 0
+export function updateActivity(activity, fields) {
+  return Object.assign(activity, fields)
 }
 
 function generateActivitySelectOtions(activities) {
