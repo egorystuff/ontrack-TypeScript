@@ -19,5 +19,5 @@ const formatedHour = `${props.hour.toString().padStart(2, 0)}:00`
 </script>
 
 <template>
-  <a href="#" :class="classes"> {{ formatedHour }} </a>
+  <div :class="classes">{{ formatedHour }}</div>
 </template>
