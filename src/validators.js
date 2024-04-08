@@ -1,4 +1,5 @@
 import { BUTTON_TYPES, NAV_ITEMS, HOURS_IN_DAY, MIDNIGHT_HOUR } from './constants'
+import { ICONS } from './icons'
 
 // -----------------------------------------------------------------------------
 
@@ -14,11 +15,11 @@ function isBetween(value, start, end) {
   return value >= start && value <= end
 }
 
-function isNotEmptyString(value) {
+// -----------------------------------------------------------------------------
+
+export function isNotEmptyString(value) {
   return isString(value) && value.length > 0
 }
-
-// -----------------------------------------------------------------------------
 
 export function isNull(value) {
   return value === null
@@ -81,4 +82,8 @@ export function isSelectValueValid(value) {
 
 export function isNumber(value) {
   return typeof value === 'number'
+}
+
+export function isIconValid(icon) {
+  return Object.keys(ICONS).includes(icon)
 }

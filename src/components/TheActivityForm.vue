@@ -3,6 +3,7 @@ import { ref, nextTick } from 'vue'
 import { BUTTON_TYPE_PRIMARY } from '../constants'
 import { id } from '../functions'
 import { createActivity } from '../activities'
+import { ICON_PLUS } from '../icons'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 
@@ -25,7 +26,7 @@ async function submit() {
       class="w-full rounded border px-4 text-xl"
     />
     <BaseButton :disabled="name.trim() === ''" :type="BUTTON_TYPE_PRIMARY">
-      <BaseIcon name="Plus" class="h-5" />
+      <BaseIcon :name="ICON_PLUS" />
     </BaseButton>
   </form>
 </template>

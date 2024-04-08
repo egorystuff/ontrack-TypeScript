@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { validateSelectOptions, isUndefinedOrNull, isSelectValueValid } from '../validators'
 import { normalizeSelectValue } from '../functions'
+import { ICON_X_MARK } from '../icons'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 
@@ -27,7 +28,7 @@ function select(value) {
 <template>
   <div class="flex gap-2">
     <BaseButton @click="select(null)">
-      <BaseIcon name="XMark" class="h-5" />
+      <BaseIcon :name="ICON_X_MARK" />
     </BaseButton>
     <select
       class="w-full truncate rounded bg-gray-100 py-1 px-2 text -2xl"

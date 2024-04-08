@@ -1,4 +1,5 @@
 import { generatePeriodSelectoptions } from './functions'
+import { ICON_LIST_BULLET, ICON_CHART_BAR, ICON_CLOCK } from './icons'
 
 export const PAGE_TIMELINE = 'timeline'
 export const PAGE_ACTIVITIES = 'activities'
@@ -11,9 +12,9 @@ export const SECONDS_IN_HOUR = SECONDS_IN_MINUTE * MINUTE_IN_HOUR
 export const MILISECONDS_IN_SECOND = 1000
 
 export const NAV_ITEMS = [
-  { page: PAGE_TIMELINE, icon: 'Clock' },
-  { page: PAGE_ACTIVITIES, icon: 'ListBullet' },
-  { page: PAGE_PROGRESS, icon: 'ChartBar' }
+  { page: PAGE_TIMELINE, icon: ICON_CLOCK },
+  { page: PAGE_ACTIVITIES, icon: ICON_LIST_BULLET },
+  { page: PAGE_PROGRESS, icon: ICON_CHART_BAR }
 ]
 
 export const BUTTON_TYPE_NEUTRAL = 'neutral'
