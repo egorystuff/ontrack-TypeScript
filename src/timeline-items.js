@@ -4,7 +4,7 @@ import { HOURS_IN_DAY, MIDNIGHT_HOUR } from './constants'
 import { currentHour } from './functions'
 
 export const timelineItems = ref(generateTimelineItems())
-export const timelineItemRefs = ref(null)
+export const timelineItemRefs = ref([])
 
 export function updateTimelineItem(timelineItem, fields) {
   return Object.assign(timelineItem, fields)

@@ -15,11 +15,11 @@ function isBetween(value, start, end) {
   return value >= start && value <= end
 }
 
-// -----------------------------------------------------------------------------
-
-export function isNotEmptyString(value) {
+function isNotEmptyString(value) {
   return isString(value) && value.length > 0
 }
+
+// -----------------------------------------------------------------------------
 
 export function isNull(value) {
   return value === null
