@@ -1,4 +1,5 @@
 import { BUTTON_TYPES, NAV_ITEMS, HOURS_IN_DAY, MIDNIGHT_HOUR } from './constants'
+import { ICONS } from './icons'
 
 // -----------------------------------------------------------------------------
 
@@ -81,4 +82,8 @@ export function isSelectValueValid(value) {
 
 export function isNumber(value) {
   return typeof value === 'number'
+}
+
+export function isIconValid(icon) {
+  return Object.keys(ICONS).includes(icon)
 }
