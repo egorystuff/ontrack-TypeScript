@@ -27,7 +27,10 @@ const props = defineProps({
   }
 })
 
-const classes = `${typeClasses[props.type]} rounded disabled:cursor-not-allowed disabled:opacity-50 p-2`
+const classes = [
+  'rounded disabled:cursor-not-allowed disabled:opacity-50 p-2',
+  typeClasses[props.type]
+]
 </script>
 
 <template>
