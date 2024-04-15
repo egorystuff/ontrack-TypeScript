@@ -33,7 +33,6 @@ export function updateActivity(activity, fields) {
 }
 
 const totalActivitySecondsToComplete = computed(() => {
-  console.log(trackedActivities.value)
   return trackedActivities.value
     .map(({ secondsToComplete }) => secondsToComplete)
     .reduce((total, seconds) => total + seconds, 0)
