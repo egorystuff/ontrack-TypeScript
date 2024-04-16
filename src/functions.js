@@ -48,10 +48,6 @@ export function formatSeconds(seconds) {
   return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
 }
 
-export function currentHour() {
-  return new Date().getHours()
-}
-
 function generatePeriodSelectOptionsLabel(periodInMinutes) {
   const hours = Math.floor(periodInMinutes / MINUTE_IN_HOUR)
     .toString()
