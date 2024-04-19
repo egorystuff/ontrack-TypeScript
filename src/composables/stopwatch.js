@@ -6,7 +6,7 @@ import { MILISECONDS_IN_SECOND } from '../constants'
 export function useStopwatch(initialSeconds) {
   const seconds = ref(initialSeconds)
   const isRunning = ref(false)
-  const temp = 120
+  const temp = 1
 
   function start() {
     isRunning.value = setInterval(() => (seconds.value += temp), MILISECONDS_IN_SECOND)
