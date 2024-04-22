@@ -9,6 +9,7 @@ export const MIDNIGHT_HOUR = 0
 export const SECONDS_IN_MINUTE = 60
 export const MINUTE_IN_HOUR = 60
 export const SECONDS_IN_HOUR = SECONDS_IN_MINUTE * MINUTE_IN_HOUR
+export const SECONDS_IN_DAY = SECONDS_IN_HOUR * HOURS_IN_DAY
 export const MILISECONDS_IN_SECOND = 1000
 
 export const NAV_ITEMS = [
@@ -36,3 +37,5 @@ export const MEDIUM_PERCENT = 66
 export const HUNDRED_PERCENT = 100
 
 export const PERIOD_SELECT_OPTIONS = generatePeriodSelectoptions()
+
+export const APP_NAME = 'OnTrack'

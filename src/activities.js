@@ -4,7 +4,7 @@ import { id } from './functions'
 
 // -----------------------------------------------------------------------------
 
-export const activities = ref(generateActivities())
+export const activities = ref([])
 
 export const activitySelectOptions = computed(() => generateActivitySelectOtions(activities.value))
 
@@ -33,7 +33,6 @@ export function updateActivity(activity, fields) {
 }
 
 const totalActivitySecondsToComplete = computed(() => {
-  console.log(trackedActivities.value)
   return trackedActivities.value
     .map(({ secondsToComplete }) => secondsToComplete)
     .reduce((total, seconds) => total + seconds, 0)
@@ -43,10 +42,10 @@ function generateActivitySelectOtions(activities) {
   return activities.map((activity) => ({ label: activity.name, value: activity.id }))
 }
 
-function generateActivities() {
-  return ['Coding', 'Training', 'Reading', 'Learning'].map((name, hours) => ({
-    id: id(),
-    name,
-    secondsToComplete: 15 * 60 // hours * SECONDS_IN_HOUR
-  }))
-}
+// function generateActivities() {
+//   return ['Coding', 'Training', 'Reading', 'Learning'].map((name, hours) => ({
+//     id: id(),
+//     name,
+//     secondsToComplete: 15 * 60 // hours * SECONDS_IN_HOUR
+//   }))
+// }
