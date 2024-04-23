@@ -8,9 +8,7 @@ import {
 
 // -----------------------------------------------------------------------------
 export function today() {
-  const today = new Date()
-  // today.setHours(0, 0)
-  return today
+  return new Date()
 }
 
 export function tomorrow() {
@@ -38,9 +36,7 @@ export const secondsSinceMidnightInPercentage = computed(
 
 export function startCurrentDateTimer() {
   now.value = today()
-  currentDateTimer = setInterval(() => {
-    now.value = new Date(now.value.getTime() + MILISECONDS_IN_SECOND)
-  }, MILISECONDS_IN_SECOND)
+  currentDateTimer = setInterval(() => (now.value = today()), MILISECONDS_IN_SECOND)
 }
 
 export function stopCurrentDateTimer() {
