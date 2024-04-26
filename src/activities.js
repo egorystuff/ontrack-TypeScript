@@ -8,6 +8,10 @@ export const activities = ref([])
 
 export const activitySelectOptions = computed(() => generateActivitySelectOtions(activities.value))
 
+export function initializeActivities(state) {
+  activities.value = state.activities || []
+}
+
 export const trackedActivities = computed(() =>
   activities.value.filter(({ secondsToComplete }) => secondsToComplete)
 )

@@ -3,12 +3,12 @@ import { formatSeconds } from '../functions'
 import {
   startTimelineItemTimer,
   stopTimelineItemTimer,
-  resetTimelineItemTimer,
-  timelineItemTimer
+  resetTimelineItemTimer
 } from '../timeline-item-timer'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '../icons'
 import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER } from '../constants'
 import { isTimelineItemValid } from '@/validators'
+import { activeTimelineItem } from '../timeline-items'
 import { now } from '@/time'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
@@ -37,9 +37,9 @@ defineProps({
     </div>
 
     <BaseButton
-      v-if="timelineItemTimer && timelineItem.hour === now.getHours()"
+      v-if="timelineItem === activeTimelineItem"
       :type="BUTTON_TYPE_WARNING"
-      @click="stopTimelineItemTimer(timelineItem)"
+      @click="stopTimelineItemTimer"
     >
       <BaseIcon :name="ICON_PAUSE" />
     </BaseButton>

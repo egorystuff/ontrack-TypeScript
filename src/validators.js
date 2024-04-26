@@ -19,6 +19,14 @@ function isNotEmptyString(value) {
   return isString(value) && value.length > 0
 }
 
+function isUndefined(value) {
+  return value === undefined
+}
+
+function isNumber(value) {
+  return typeof value === 'number'
+}
+
 // -----------------------------------------------------------------------------
 
 export function isNull(value) {
@@ -45,16 +53,8 @@ export function validateSelectOptions(options) {
   return options.every(isSelectOptionValid)
 }
 
-export function validateTimelineItems(timelineItems) {
-  return timelineItems.every(isTimelineItemValid)
-}
-
 export function isUndefinedOrNull(value) {
   return isUndefined(value) || isNull(value)
-}
-
-export function isNumberOrNull(value) {
-  return isNumber(value) || isNull(value)
 }
 
 export function isActivityValid({ id, name, secondsToComplete }) {
@@ -64,24 +64,12 @@ export function isActivityValid({ id, name, secondsToComplete }) {
   return [isNotEmptyString(id), isNotEmptyString(name), isNumber(secondsToComplete)].every(Boolean)
 }
 
-export function validateActivities(activities) {
-  return activities.every(isActivityValid)
-}
-
 export function isButtonTypeValid(type) {
   return BUTTON_TYPES.includes(type)
 }
 
-export function isUndefined(value) {
-  return value === undefined
-}
-
 export function isSelectValueValid(value) {
   return isNumber(value) || isNull(value) || isNotEmptyString(value)
-}
-
-export function isNumber(value) {
-  return typeof value === 'number'
 }
 
 export function isIconValid(icon) {
