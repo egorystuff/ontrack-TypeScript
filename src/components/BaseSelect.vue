@@ -31,7 +31,7 @@ function select(value) {
       <BaseIcon :name="ICON_X_MARK" />
     </BaseButton>
     <select
-      class="w-full truncate rounded bg-gray-100 py-1 px-2 text -2xl"
+      class="text -2xl w-full truncate rounded bg-gray-100 px-2 py-1"
       @change="select($event.target.value)"
     >
       <option :selected="isNotSelected" disabled value="">

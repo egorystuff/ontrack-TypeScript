@@ -34,7 +34,7 @@ const deleteAndResetActivity = (activity) => {
 
     <div class="flex gap-2">
       <BaseSelect
-        class="font-mono grow"
+        class="grow font-mono"
         placeholder="hh:mm"
         :options="PERIOD_SELECT_OPTIONS"
         :selected="activity.secondsToComplete || null"

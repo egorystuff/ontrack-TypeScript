@@ -1,7 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { routes, currentPage } from './router'
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
+
+const name: string = 'egor'
 </script>
 
 <!-- --------------------------------------------------------------------------------- -->

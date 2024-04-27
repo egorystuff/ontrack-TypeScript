@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "lint": "eslint . --ext .vue,.js,.jsx,.ts,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
   "dependencies": {
@@ -23,7 +23,7 @@
     "eslint-plugin-vue": "^9.25.0",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.12",
+    "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3",
     "vite": "^5.2.10",
     "vue-tsc": "^2.0.14"

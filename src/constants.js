@@ -38,4 +38,4 @@ export const HUNDRED_PERCENT = 100
 
 export const PERIOD_SELECT_OPTIONS = generatePeriodSelectoptions()
 
-export const APP_NAME = 'OnTrack'
+export const LOCAL_STORAGE_KEY = 'ontrack-typescript'

@@ -32,7 +32,7 @@ defineProps({
       <BaseIcon :name="ICON_ARROW_PATH" />
     </BaseButton>
 
-    <div class="flex flex-grow items-center rouded bg-gray-100 px-2 font-mono text-3xl">
+    <div class="rouded flex flex-grow items-center bg-gray-100 px-2 font-mono text-3xl">
       {{ formatSeconds(timelineItem.activitySeconds) }}
     </div>
 
