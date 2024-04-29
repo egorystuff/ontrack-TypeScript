@@ -1,17 +1,7 @@
 import { ref, computed } from 'vue'
 import { SECONDS_IN_HOUR, HUNDRED_PERCENT } from './constants'
 import { id } from './functions'
-
-interface Activity {
-  id: string
-  name: string
-  secondsToComplete: number
-}
-
-interface ActivitySelectOptions {
-  value: string
-  label: string
-}
+import type { Activity, ActivitySelectOptions } from './types'
 
 // -----------------------------------------------------------------------------
 
