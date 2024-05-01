@@ -1,17 +1,17 @@
 import { ref, computed } from 'vue'
 import { SECONDS_IN_HOUR, HUNDRED_PERCENT } from './constants'
 import { id } from './functions'
-import type { Activity, ActivitySelectOptions } from './types'
+import type { Activity, SelectOption, State } from './types'
 
 // -----------------------------------------------------------------------------
 
 export const activities = ref<Activity[]>([])
 
-export const activitySelectOptions = computed<ActivitySelectOptions[]>(() =>
+export const activitySelectOptions = computed<SelectOption[]>(() =>
   generateActivitySelectOtions(activities.value)
 )
 
-export function initializeActivities(state: any): void {
+export function initializeActivities(state: State): void {
   activities.value = state.activities || []
 }
 
@@ -38,7 +38,7 @@ export function createActivity(activity: Activity): void {
   activities.value.push(activity)
 }
 
-export function updateActivity(activity: Activity, fields: any): Activity {
+export function updateActivity(activity: Activity, fields: Partial<Activity>): Activity {
   return Object.assign(activity, fields)
 }
 
@@ -48,10 +48,8 @@ const totalActivitySecondsToComplete = computed(() => {
     .reduce((total, seconds) => total + seconds, 0)
 })
 
-function generateActivitySelectOtions(activities: Activity[]): ActivitySelectOptions[] {
-  return activities.map(
-    (activity): ActivitySelectOptions => ({ label: activity.name, value: activity.id })
-  )
+function generateActivitySelectOtions(activities: Activity[]): SelectOption[] {
+  return activities.map((activity): SelectOption => ({ label: activity.name, value: activity.id }))
 }
 
 // function generateActivities() {

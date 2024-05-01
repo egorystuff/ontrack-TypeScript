@@ -17,20 +17,20 @@ export interface Activity {
   secondsToComplete: number
 }
 
-export interface ActivitySelectOptions {
-  value: string
+export interface SelectOption<T = string> {
+  value: T
   label: string
 }
 
 export interface State {
-  timelineItems: any
+  timelineItems: TimelineItem[]
   activities: Activity[]
   lastActiveAt: Date
 }
 
 export interface TimelineItem {
   hour: number
-  activityId: string | null
+  activityId: Activity['id'] | null
   activitySeconds: number
   isActive: boolean
 }
@@ -44,7 +44,7 @@ export type ButtonType =
 
 export interface NavItem {
   page: PageName
-  icon: any
+  icon: string
 }
 
 export enum ProgressColorClass {
@@ -52,9 +52,4 @@ export enum ProgressColorClass {
   YELLOW = 'bg-yellow-500',
   BLUE = 'bg-blue-500',
   GREEN = 'bg-green-500'
-}
-
-export interface PeriodSelectOption {
-  value: number
-  label: string
 }

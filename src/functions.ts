@@ -6,7 +6,7 @@ import {
   MEDIUM_PERCENT,
   LOW_PERCENT
 } from './constants'
-import { PeriodSelectOption, ProgressColorClass } from './types'
+import { type SelectOption, ProgressColorClass } from './types'
 import { isNull } from './validators'
 
 // ------------------------------------------------------------------------------------------
@@ -19,11 +19,11 @@ export function normalizeSelectValue(value: any): any {
   return isNull(value) || isNaN(value) ? value : +value
 }
 
-export function generatePeriodSelectoptions(): PeriodSelectOption[] {
+export function generatePeriodSelectoptions(): SelectOption<number>[] {
   const periodInMinutes = [
     15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 420, 480
   ]
-  return periodInMinutes.map((periodInMinutes): PeriodSelectOption => {
+  return periodInMinutes.map((periodInMinutes): SelectOption<number> => {
     return {
       value: periodInMinutes * SECONDS_IN_MINUTE,
       label: generatePeriodSelectOptionsLabel(periodInMinutes)

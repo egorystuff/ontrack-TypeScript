@@ -37,6 +37,6 @@ export const LOW_PERCENT = 33
 export const MEDIUM_PERCENT = 66
 export const HUNDRED_PERCENT = 100
 
-export const PERIOD_SELECT_OPTIONS: any = generatePeriodSelectoptions()
+export const PERIOD_SELECT_OPTIONS = generatePeriodSelectoptions()
 
 export const LOCAL_STORAGE_KEY = 'ontrack-typescript'
