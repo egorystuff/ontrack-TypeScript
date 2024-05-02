@@ -7,10 +7,6 @@ function isString(value: any): boolean {
   return typeof value === 'string'
 }
 
-function isSelectOptionValid({ value, label }: any): boolean {
-  return isNumber(value) || (isNotEmptyString(value) && isNotEmptyString(label))
-}
-
 function isBetween(value: any, start: any, end: any): boolean {
   return value >= start && value <= end
 }
@@ -49,10 +45,6 @@ export function isTimelineItemValid({ hour }: any): boolean {
   return isHourValid(hour)
 }
 
-export function validateSelectOptions(options: any): boolean {
-  return options.every(isSelectOptionValid)
-}
-
 export function isUndefinedOrNull(value: any): boolean {
   return isUndefined(value) || isNull(value)
 }
@@ -62,10 +54,6 @@ export function isActivityValid({ id, name, secondsToComplete }: any): boolean {
     return true
   }
   return [isNotEmptyString(id), isNotEmptyString(name), isNumber(secondsToComplete)].every(Boolean)
-}
-
-export function isButtonTypeValid(type: any): boolean {
-  return BUTTON_TYPES.includes(type)
 }
 
 export function isSelectValueValid(value: any): boolean {
