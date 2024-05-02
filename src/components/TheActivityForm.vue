@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, nextTick } from 'vue'
 import { BUTTON_TYPE_PRIMARY } from '../constants'
 import { id } from '../functions'
@@ -9,7 +9,7 @@ import BaseIcon from './BaseIcon.vue'
 
 const name = ref('')
 
-async function submit() {
+async function submit(): Promise<void> {
   createActivity({ id: id(), name: name.value, secondsToComplete: 0 })
   name.value = ''
   await nextTick()

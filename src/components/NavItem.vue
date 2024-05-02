@@ -1,18 +1,14 @@
-<script setup>
-import { isNavItemValid } from '@/validators'
+<script setup lang="ts">
 import { navigate, currentPage } from '../router'
 import { computed } from 'vue'
+import type { NavItem } from '../types'
 import BaseIcon from './BaseIcon.vue'
 
-const props = defineProps({
-  navItem: {
-    required: true,
-    type: Object,
-    validator: isNavItemValid
-  }
-})
+const props = defineProps<{
+  navItem: NavItem
+}>()
 
-const classes = computed(() => [
+const classes = computed((): string[] => [
   'flex flex-col items-center p-2 text-xs capitalize',
   props.navItem.page === currentPage.value ? 'bg-gray-200' : 'hover:bg-gray-100'
 ])
