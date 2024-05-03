@@ -3,22 +3,26 @@ import { MILISECONDS_IN_SECOND } from './constants'
 import { updateTimelineItem, activeTimelineItem } from './timeline-items'
 import type { TimelineItem } from './types'
 
-const timelineItemTimer = ref<number | undefined>()
+const timelineItemTimer = ref<NodeJS.Timeout | undefined>()
 
 export function startTimelineItemTimer(timelineItem?: TimelineItem): void {
   timelineItem = timelineItem ?? activeTimelineItem.value
+  if (!timelineItem) return
 
-  updateTimelineItem(timelineItem as any, { isActive: true })
+  updateTimelineItem(timelineItem, { isActive: true })
 
   timelineItemTimer.value = setInterval((): void => {
-    updateTimelineItem(timelineItem as any, {
-      activitySeconds: (timelineItem as any).activitySeconds + 1
+    if (!timelineItem) return
+    updateTimelineItem(timelineItem, {
+      activitySeconds: timelineItem.activitySeconds + 1
     })
   }, MILISECONDS_IN_SECOND)
 }
 
 export function stopTimelineItemTimer(): void {
-  updateTimelineItem(activeTimelineItem.value as any, { isActive: false })
+  if (!activeTimelineItem.value) return
+
+  updateTimelineItem(activeTimelineItem.value, { isActive: false })
 
   clearInterval(timelineItemTimer.value)
   timelineItemTimer.value = undefined

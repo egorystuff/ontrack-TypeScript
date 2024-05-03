@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { now } from '@/time'
+import { now } from '../time'
 import type { Hour } from '../types'
 
 const props = defineProps<{

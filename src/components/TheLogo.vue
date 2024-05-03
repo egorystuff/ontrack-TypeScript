@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { currentPage, navigate } from '../router'
-import { scrollToCurrentHour } from '@/timeline-items'
+import { scrollToCurrentHour } from '../timeline-items'
 import { IconName, PageName } from '../types'
 
 import BaseIcon from './BaseIcon.vue'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { HUNDRED_PERCENT } from '../constants'
 import { navigate } from '../router'
-import { useTotalProgress } from '@/composables/total-progress'
+import { useTotalProgress } from '../composables/total-progress'
 import { IconName, PageName } from '../types'
 
 import BaseIcon from './BaseIcon.vue'

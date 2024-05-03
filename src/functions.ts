@@ -14,8 +14,8 @@ export function id(): string {
   return Date.now().toString(36) + Math.random().toString(36).substring(2)
 }
 
-export function normalizeSelectValue(value: any): any {
-  return value === null || isNaN(value) ? value : +value
+export function normalizeSelectValue(value: string | null): string | null | number {
+  return value === null || isNaN(Number(value)) ? value : +value
 }
 
 export function generatePeriodSelectoptions(): SelectOption<number>[] {

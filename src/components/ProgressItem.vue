@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { formatSeconds } from '../functions'
 import { HUNDRED_PERCENT } from '../constants'
-import { useProgress } from '@/composables/progress'
+import { useProgress } from '../composables/progress'
 import type { Activity } from '../types'
 
 const props = defineProps<{ activity: Activity }>()

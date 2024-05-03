@@ -6,7 +6,7 @@ import {
   resetTimelineItemTimer
 } from '../timeline-item-timer'
 import { activeTimelineItem } from '../timeline-items'
-import { now } from '@/time'
+import { now } from '../time'
 import { type TimelineItem, IconName, ButtonType } from '../types'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'

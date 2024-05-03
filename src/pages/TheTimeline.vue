@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { timelineItems } from '@/timeline-items'
+import { timelineItems } from '../timeline-items'
 import TimelineItem from '../components/TimelineItem.vue'
 import TheTimelineIndicator from '../components/TheTimelineIndicator.vue'
 

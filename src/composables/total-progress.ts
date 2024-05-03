@@ -1,6 +1,6 @@
 import { type ComputedRef, computed } from 'vue'
-import { calculateCompletionPercentage, trackedActivities } from '@/activities'
-import { timelineItems, calculateTrackedActivitySeconds } from '@/timeline-items'
+import { calculateCompletionPercentage, trackedActivities } from '../activities'
+import { timelineItems, calculateTrackedActivitySeconds } from '../timeline-items'
 import { getProgressColorClass } from '../functions'
 import type { ProgressColorClass } from '../types'
 

@@ -4,7 +4,7 @@ import {
   SECONDS_IN_DAY,
   MILISECONDS_IN_SECOND,
   SECONDS_IN_HOUR
-} from '@/constants'
+} from './constants'
 
 // -----------------------------------------------------------------------------
 
@@ -13,7 +13,7 @@ export const now = ref(today())
 const midnight = computed((): number => new Date(now.value).setHours(0, 0, 0, 0))
 
 const secondsSinceMidnight = computed(
-  (): number => ((now.value as any) - midnight.value) / MILISECONDS_IN_SECOND
+  (): number => (now.value.getTime() - midnight.value) / MILISECONDS_IN_SECOND
 )
 
 export const secondsSinceMidnightInPercentage = computed(

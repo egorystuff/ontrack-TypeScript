@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { HUNDRED_PERCENT } from '@/constants'
+import { HUNDRED_PERCENT } from '../constants'
 import { secondsSinceMidnightInPercentage } from '../time'
 
 const indicatorRef = ref<HTMLHRElement | null>(null)

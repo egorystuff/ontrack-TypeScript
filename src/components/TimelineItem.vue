@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { activitySelectOptions } from '@/activities'
-import { updateTimelineItem } from '@/timeline-items'
+import { activitySelectOptions } from '../activities'
+import { updateTimelineItem } from '../timeline-items'
 import type { TimelineItem } from '../types'
 import BaseSelect from './BaseSelect.vue'
 import TimelineHour from './TimelineHour.vue'
