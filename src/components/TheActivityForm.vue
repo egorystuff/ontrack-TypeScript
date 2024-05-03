@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, nextTick } from 'vue'
-import { BUTTON_TYPE_PRIMARY } from '../constants'
 import { id } from '../functions'
 import { createActivity } from '../activities'
-import { ICON_PLUS } from '../icons'
+import { IconName, ButtonType } from '../types'
+
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 
@@ -25,8 +25,8 @@ async function submit(): Promise<void> {
       placeholder="Activity name"
       class="w-full rounded border px-4 text-xl"
     />
-    <BaseButton :disabled="name.trim() === ''" :type="BUTTON_TYPE_PRIMARY">
-      <BaseIcon :name="ICON_PLUS" />
+    <BaseButton :disabled="name.trim() === ''" :type="ButtonType.PRIMARY">
+      <BaseIcon :name="IconName.PLUS" />
     </BaseButton>
   </form>
 </template>

@@ -1,28 +1,27 @@
-import { Component, ref } from 'vue'
-import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './constants'
-import { isPageValid } from './validators'
+import { type Component, ref } from 'vue'
+import { NAV_ITEMS } from './constants'
 import TheTimeline from './pages/TheTimeline.vue'
 import TheActivities from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
-import type { PageName } from './types'
+import { PageName } from './types'
 
 // ----------------------------------------------------------------------
 
 export const currentPage = ref<PageName>(normalizePageHash())
 
 export const routes: Record<PageName, Component> = {
-  [PAGE_TIMELINE]: TheTimeline,
-  [PAGE_ACTIVITIES]: TheActivities,
-  [PAGE_PROGRESS]: TheProgress
+  [PageName.TIMELINE]: TheTimeline,
+  [PageName.ACTIVITIES]: TheActivities,
+  [PageName.PROGRESS]: TheProgress
 }
 
 export function normalizePageHash(): PageName {
   const page = window.location.hash.slice(1)
-  if (isPageValid(page)) {
+  if (NAV_ITEMS.some((navItem): boolean => navItem.page === page)) {
     return page as PageName
   } else {
-    window.location.hash = PAGE_TIMELINE
-    return PAGE_TIMELINE
+    window.location.hash = PageName.TIMELINE
+    return PageName.TIMELINE
   }
 }
 

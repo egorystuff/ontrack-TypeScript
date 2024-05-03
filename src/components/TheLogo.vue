@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { PAGE_TIMELINE } from '../constants'
-import { ICON_CLOCK } from '../icons'
 import { currentPage, navigate } from '../router'
 import { scrollToCurrentHour } from '@/timeline-items'
+import { IconName, PageName } from '../types'
+
 import BaseIcon from './BaseIcon.vue'
 
-// function handleClick():void {
-//   currentPage.value === PAGE_TIMELINE ? scrollToCurrentHour() : navigate(PAGE_TIMELINE)
-// }
+function handleClick(): void {
+  currentPage.value === PageName.TIMELINE ? scrollToCurrentHour() : navigate(PageName.TIMELINE)
+}
 </script>
 
 <!-- --------------------------------------------------------------------------------- -->
 
 <template>
   <a
-    :href="`#${PAGE_TIMELINE}`"
+    :href="`#${PageName.TIMELINE}`"
     @click="handleClick"
     class="scale-115 origin-left rounded bg-black text-white"
   >
-    <BaseIcon :name="ICON_CLOCK" class="h-10" />
+    <BaseIcon :name="IconName.CLOCK" class="h-10" />
   </a>
 </template>

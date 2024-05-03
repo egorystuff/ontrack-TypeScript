@@ -7,7 +7,6 @@ import {
   LOW_PERCENT
 } from './constants'
 import { type SelectOption, ProgressColorClass } from './types'
-import { isNull } from './validators'
 
 // ------------------------------------------------------------------------------------------
 
@@ -16,7 +15,7 @@ export function id(): string {
 }
 
 export function normalizeSelectValue(value: any): any {
-  return isNull(value) || isNaN(value) ? value : +value
+  return value === null || isNaN(value) ? value : +value
 }
 
 export function generatePeriodSelectoptions(): SelectOption<number>[] {
